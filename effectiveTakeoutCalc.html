@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Effective Takeout Calculator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="effectiveTakeoutStyle.css">
+
+    <script>
+      function calc(){
+      var carry = +document.getElementById("carry").value;
+      var nm = +document.getElementById("nm").value;
+      var take = +document.getElementById("take").value;
+
+      var eft = 1-((nm*(100-take)/100)+carry)/nm;
+
+      document.getElementsByTagName("p")[0].innerHTML = "The effective takeout is " + (eft*100).toFixed(2) + "%";
+    }
+    </script>
+
+    <script>
+      function eraseText(){
+      var elements = document.getElementsByClassName('inp');
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].value = ""
+      }
+    }
+    </script>
+</head>
+
+<body>
+  <h1>Effective Takeout Calculator</h1>
+  <label for ="carry" > Carryover</label>
+  <input class = "inp" id="carry" type="number"/><br>
+  <label for ="nm" > Amount Bet into Carryover</label>
+  <input class = "inp" id="nm" type="number"/><br>
+  <label for ="take" > Takeout of Sequence</label>
+  <input class= "inp" id="take" type="number" placeholder="e.g. 15%" /><br>
+
+  <button onclick="calc()">Calculate</button>
+  <button onclick="eraseText()">Reset</button>
+  <p></p>
+ </body>
+</html>
